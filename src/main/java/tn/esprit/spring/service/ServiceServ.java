@@ -1,11 +1,11 @@
 package tn.esprit.spring.service;
 
 
+import java.time.format.DateTimeFormatter;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+
+import java.time.LocalDateTime;
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +22,12 @@ public class ServiceServ {
 @Autowired
 private RepositoryServ rep;
 
-public Servicee addService(Servicee s) throws ParseException{
+public Servicee addService(Servicee s){
 
 	try{
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-		Date d = dateFormat.parse(dateFormat.format(Calendar.getInstance().getTime())); 
+		LocalDateTime dateTime = LocalDateTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");			
+		String d =  dateTime.format(formatter); 
 		s.setDateDeCreation(d);
 		return rep.save(s);}
 catch (BusinessResourceException e) {

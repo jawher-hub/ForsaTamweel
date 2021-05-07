@@ -1,0 +1,64 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+template="/template/template.xhtml">
+ <h:head>
+	<link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.min.css"/>
+ </h:head>
+
+<ui:param name="page_name" value="Accueil" />
+<ui:define name="content">
+<!--BEGIN : TP1 JSF Introduction Login -->
+
+
+<h:panelGroup columns="2">
+<h:form>
+<table class="table">
+<tr><td><h:outputText value="name"></h:outputText></td><td><h:inputText
+value="#{EventController.name}"></h:inputText></td></tr>
+<tr><td><h:outputText value="description"></h:outputText></td>
+<td><h:inputText class="form-control mb-4 col-4" value="#{EventController.description}"></h:inputText></td></tr>
+<tr><td><h:outputText class="form-control mb-4 col-4" value="remainingPlaces"></h:outputText></td>
+<td><h:inputText class="form-control mb-4 col-4" value="#{EventController.remainingPlaces}"></h:inputText></td></tr>
+<tr><td><h:outputText value="numOfRegistrants"></h:outputText></td>
+<td><h:inputText class="form-control mb-4 col-4"  value="#{EventController.numOfRegistrants}"></h:inputText></td></tr>
+<tr><td><h:outputText value="dateDeCreation"></h:outputText></td>
+<td><h:inputText class="form-control mb-4 col-4"  value="#{EventController.dateDeCreation}"></h:inputText></td></tr>
+
+<tr><td colspan="2"> <h:commandButton value="Ajouter Employé"  class="btn "	
+action="#{EventController.addEvent()}" /></td></tr>
+</table>
+</h:form>
+</h:panelGroup>
+
+
+<h:panelGroup columns="2">
+<h:form>
+<h:dataTable class="table" value="#{EventController.events}" var="e" border="1">
+
+<h:column><f:facet name="header"><h:outputText value="name event" /></f:facet>
+<h:outputText value="#{e.name}" /></h:column>
+<h:column><f:facet name="header"><h:outputText value="description" /></f:facet>
+<h:outputText value="#{e.description}" /></h:column>
+<h:column><f:facet name="header"><h:outputText value="dateDeCreation" /></f:facet>
+<h:outputText value="#{e.dateDeCreation}" /></h:column>
+<h:column><f:facet name="header"><h:outputText value="remainingPlaces" /></f:facet>
+<h:outputText value="#{e.remainingPlaces}" /></h:column>
+<h:column><f:facet name="header"><h:outputText value="numOfRegistrants" /></f:facet>
+<h:outputText value="#{e.numOfRegistrants}" /></h:column>
+
+<h:column>
+<f:facet name="header"><h:outputText value="Action" /></f:facet>
+<h:commandButton action="#{EventController.removeEvent(e.idEvent)}" value="supprimer" />
+
+<h:commandButton action="#{EventController.displayEvent(e)}" value="Afficher" />
+
+<h:commandButton value="Mettre A jour Employé" action="#{EventController.updateEvent()}" />
+
+</h:column>
+</h:dataTable>
+</h:form>
+</h:panelGroup>
+</ui:define> 
+</ui:composition>
