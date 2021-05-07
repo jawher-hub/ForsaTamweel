@@ -1,6 +1,5 @@
 package tn.esprit.spring.controler;
 
-import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,26 +24,29 @@ import tn.esprit.spring.service.ServiceComment;
 public class ControllerComment {
 	@Autowired
 	private ServiceComment se;
-// http://localhost:8090/Comment/save
+	
+
+// http://localhost:8090/comment/save
 	@PostMapping("/save")
 	public Comment addCom(@RequestBody Comment e) {
 		return se.addComment(e);
 	}
 	
-// http://localhost:8090/Comment/allecomments
+// http://localhost:8090/comment/allecomments
 	@GetMapping("/allecomments")
 	public List<Comment> findAllEvent(){
 		return se.findAll();
 	}
 	
-// http://localhost:8090/Event/Comment/{id}
+// http://localhost:8090/comment/delete/{id}
 	@DeleteMapping("/delete/{id}")
 	public void deleteEvent(@PathVariable("id") Long id){
 			se.deleteComment(id);}
 	
-// http://localhost:8090/Comment/update
+// 	
 	@PutMapping("/update")
 	public Comment updateComment(@RequestBody Comment e){
 		return se.updateComment(e);
 	}
-	}
+
+}

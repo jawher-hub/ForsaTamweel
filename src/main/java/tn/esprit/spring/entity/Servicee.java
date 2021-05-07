@@ -5,12 +5,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 import java.io.Serializable;
-import java.util.Date;
+
 
 import javax.persistence.Column;
 
@@ -29,8 +28,12 @@ public class Servicee implements Serializable {
 	private String name;
 	@Column(name = "description")
 	private String description;
-	@Temporal(TemporalType.DATE)
-	private Date dateDeCreation;
+	@Column(name="dateDeCreation")
+	private String dateDeCreation;
+	
+	@ManyToOne
+	private User u;
+	
 	public Servicee(long idService, String name, String description) {
 		super();
 		this.idService = idService;
@@ -62,11 +65,11 @@ public class Servicee implements Serializable {
 		return description;
 	}
 	
-	public Date getDateDeCreation() {
+	public String getDateDeCreation() {
 		return dateDeCreation;
 	}
-	public void setDateDeCreation(Date dateDeCreation) {
-		this.dateDeCreation = dateDeCreation;
+	public void setDateDeCreation(String d) {
+		this.dateDeCreation = d;
 	}
 	public void setDescription(String description) {
 		this.description = description;

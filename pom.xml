@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.4</version>
+		<version>2.4.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>backendpi</groupId>
@@ -44,10 +44,64 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
- 
+ <dependency>
+<groupId>org.apache.myfaces.core</groupId>
+<artifactId>myfaces-impl</artifactId>
+<version>2.2.12</version>
+</dependency>
+<dependency>
+<groupId>org.apache.myfaces.core</groupId>
+<artifactId>myfaces-api</artifactId>
+<version>2.2.12</version>
+</dependency>
+<dependency>
+<groupId>org.apache.tomcat.embed</groupId>
+<artifactId>tomcat-embed-jasper</artifactId>
+</dependency>
+<dependency>
+<groupId>org.ocpsoft.rewrite</groupId>
+<artifactId>rewrite-servlet</artifactId>
+<version>3.4.1.Final</version>
+</dependency>
+<dependency>
+<groupId>org.ocpsoft.rewrite</groupId>
+<artifactId>rewrite-integration-faces</artifactId>
+<version>3.4.1.Final</version>
+</dependency>
+<dependency>
+    <groupId>org.primefaces.extensions</groupId>
+    <artifactId>primefaces-extensions</artifactId>
+    <version>10.0.0</version>
+</dependency>
+<dependency>
+    <groupId>org.primefaces</groupId>
+    <artifactId>primefaces</artifactId>
+    <version>10.0.0</version>
+</dependency>
+<dependency>
+<groupId>org.projectlombok</groupId>
+<artifactId>lombok</artifactId>
+<version>1.16.16</version>
+</dependency>
+
+<dependency>
+    <groupId>net.bootsfaces</groupId>
+    <artifactId>bootsfaces</artifactId>
+    <version>1.5.0</version>
+    <scope>compile</scope>
+</dependency>
+                  
+<dependency>
+    <groupId>net.bootsfaces</groupId>
+    <artifactId>bootsfaces</artifactId>
+    <version>1.5.0</version>
+    <scope>compile</scope>
+</dependency>
+                     	
 	</dependencies>
 
 	<build>
+	<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
 		<plugins>
 			<plugin>	
 				<groupId>org.springframework.boot</groupId>

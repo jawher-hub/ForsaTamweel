@@ -23,12 +23,12 @@ import tn.esprit.spring.service.ServiceUser;
 public class ControllerUser {
 	@Autowired
 	private ServiceUser se;
-// http://localhost:8090/Event/save
+// http://localhost:8090/user/save
 	@PostMapping("/save")
 	public User addEvent(@RequestBody User u) {
 		return se.addUser(u);
 	}
-	// http://localhost:8090/Event/alleusers
+	// http://localhost:8090/user/alleusers
 		@GetMapping("/allusers")
 		public List<User> findAllUser(){
 			return se.findAll();

@@ -7,11 +7,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -27,35 +25,47 @@ public class Event implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idEvent;
-	@Column(name = "name")
-	private String name;
-	@Column(name = "description")
-	private String description;
-	@Column(name = "numOfRegistrants")
-	private Long numOfRegistrants;
-	@Column(name = "remainingPlaces")
-	private Long remainingPlaces;
-	@Temporal(TemporalType.DATE)
-	private Date dateDeCreation;
-	@OneToMany(mappedBy="ev", fetch= FetchType.EAGER)
+		private long idEvent;
+		@Column(name = "name")
+		private String name;
+		@Column(name = "description")
+		private String description;
+		@Column(name = "numOfRegistrants")
+		private Long numOfRegistrants;
+		@Column(name = "remainingPlaces")
+		private Long remainingPlaces;
+		@Column(name= "dateDeCreation")
+		private String dateDeCreation;
+	@OneToMany(mappedBy="ev", fetch= FetchType.EAGER,cascade = CascadeType.ALL)
 	List<Rating> rat;
-//	@OneToMany(mappedBy="e", fetch= FetchType.EAGER,cascade = CascadeType.ALL)
-//	 List<Comment> comm;
+	
+	@OneToMany(mappedBy="e", fetch= FetchType.LAZY,cascade = CascadeType.ALL)
+	 List<Comment> comm;
 	
 
 	
-	public Event(long idEvent, String name, String description, Long numOfRegistrants, Long remainingPlaces
-			) {
+
+	
+	public Event(long idEvent, String name, String description, Long numOfRegistrants, Long remainingPlaces,
+			String dateDeCreation) {
 		super();
 		this.idEvent = idEvent;
 		this.name = name;
 		this.description = description;
 		this.numOfRegistrants = numOfRegistrants;
 		this.remainingPlaces = remainingPlaces;
-		
-		
+		this.dateDeCreation = dateDeCreation;
 	}
+
+	public Event(String name, String description, Long numOfRegistrants, Long remainingPlaces, String dateDeCreation) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.numOfRegistrants = numOfRegistrants;
+		this.remainingPlaces = remainingPlaces;
+		this.dateDeCreation = dateDeCreation;
+	}
+
 	public Event() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -93,10 +103,10 @@ public class Event implements Serializable {
 	public static long getSerialversionuid() {
 		return serialVersionUID;}
 	
-	public Date getDateDeCreation() {
+	public String getDateDeCreation() {
 		return dateDeCreation;
 	}
-	public void setDateDeCreation(Date dateDeCreation) {
+	public void setDateDeCreation(String dateDeCreation) {
 		this.dateDeCreation = dateDeCreation;
 	}
 	@Override

@@ -34,8 +34,7 @@ public class ServiceRating {
 			rat.setUser(user);
 			rat.setEv(event);
 			rep.save(rat);}
-		else 
-		{rep.delete(re.get(0));}  }
+		 }
 		return ; }
 	
 	public List<Rating> findAll (){
